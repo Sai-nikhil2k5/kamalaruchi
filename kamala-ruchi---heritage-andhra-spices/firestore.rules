@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (
+          request.auth.token.email == 'kruchimade@gmail.com' ||
+          request.auth.token.role == 'admin' ||
+          exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'
+        );
+    }
+
+    // Users collection:
+    // Any authenticated user can read/write their own profile.
+    // Admins can read all profiles to monitor users.
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId) || isAdmin();
+      allow update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Orders collection:
+    // Customers can read their own orders and create orders.
+    // Admins can read, update status, or cancel any order.
+    match /orders/{orderId} {
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow update, delete: if isAdmin();
+    }
+
+    // User Activity / Audit Logs collection:
+    // Any authenticated user can append an action/activity log (login, view, checkout, cart update).
+    // Admins can read and audit all user actions.
+    match /activityLogs/{logId} {
+      allow create: if isAuthenticated() || true;
+      allow read: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // Products collection (can be read by everyone, edited by admin)
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /announcements/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /popups/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

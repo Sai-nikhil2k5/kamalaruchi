@@ -1,0 +1,60 @@
+{
+  "$schema": "https://firebase.google.com/docs/firestore/blueprint-schema",
+  "entities": {
+    "User": {
+      "collection": "users",
+      "fields": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "address": { "type": "string" },
+        "city": { "type": "string" },
+        "pincode": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastLoginAt": { "type": "string" },
+        "orderCount": { "type": "number" },
+        "totalSpent": { "type": "number" }
+      }
+    },
+    "Order": {
+      "collection": "orders",
+      "fields": {
+        "id": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "userId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "shippingAddress": { "type": "string" },
+        "city": { "type": "string" },
+        "pincode": { "type": "string" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "discountAmount": { "type": "number" },
+        "shippingFee": { "type": "number" },
+        "finalTotal": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "orderStatus": { "type": "string" },
+        "couponApplied": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "ActivityLog": {
+      "collection": "activityLogs",
+      "fields": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "action": { "type": "string" },
+        "details": { "type": "string" },
+        "metadata": { "type": "object" },
+        "timestamp": { "type": "string" }
+      }
+    }
+  }
+}

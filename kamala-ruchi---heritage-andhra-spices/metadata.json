@@ -1,0 +1,7 @@
+{
+  "name": "Kamala Ruchi - Heritage Andhra Spices",
+  "description": "Authentic stone-pounded South Indian spice blends, hand-roasted in small batches using traditional courtyard recipes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

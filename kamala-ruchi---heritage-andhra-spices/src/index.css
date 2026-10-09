@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #fff8f2;
+  --color-surface-dim: #ecd7b3;
+  --color-surface-bright: #fff8f2;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff2df;
+  --color-surface-container: #ffebcb;
+  --color-surface-container-high: #fbe6c1;
+  --color-surface-container-highest: #f5e0bb;
+  --color-on-surface: #241a04;
+  --color-on-surface-variant: #5b403e;
+  --color-inverse-surface: #3b2f16;
+  --color-inverse-on-surface: #ffefd5;
+  --color-outline: #8f706d;
+  --color-outline-variant: #e3beba;
+  --color-surface-tint: #b71f25;
+  --color-primary: #af1820;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #d23435;
+  --color-on-primary-container: #fff4f3;
+  --color-inverse-primary: #ffb3ad;
+  --color-secondary: #7b5737;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #ffcea6;
+  --color-on-secondary-container: #7a5536;
+  --color-tertiary: #6d542f;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #876c45;
+  --color-on-tertiary-container: #fff4eb;
+  --color-secondary-fixed: #ffdcc2;
+  --color-secondary-fixed-dim: #edbd96;
+  --color-on-secondary-fixed: #2e1500;
+  --color-on-secondary-fixed-variant: #613f22;
+  --color-tertiary-fixed: #ffddb1;
+  --color-tertiary-fixed-dim: #e3c193;
+  --color-on-tertiary-fixed: #291800;
+  --color-on-tertiary-fixed-variant: #5a431f;
+  --color-background: #fff8f2;
+  --color-on-background: #241a04;
+  --color-surface-variant: #f5e0bb;
+
+  --font-headline-md: "Playfair Display", Georgia, serif;
+  --font-headline-lg: "Playfair Display", Georgia, serif;
+  --font-headline-sm: "Playfair Display", Georgia, serif;
+  --font-display-lg: "Playfair Display", Georgia, serif;
+  --font-body-lg: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body-md: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body-sm: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-title-md: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-title-sm: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-label-lg: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-label-md: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-label-sm: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --animate-marquee: marquee 20s linear infinite;
+  @keyframes marquee {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #fff8f2;
+  color: #241a04;
+}
+
+.font-serif,
+.font-headline-md,
+.font-headline-lg,
+.font-headline-sm,
+.font-display-lg {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Material Symbols fill styling */
+.material-symbols-fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
